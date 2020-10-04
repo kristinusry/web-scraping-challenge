@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Latest Mars News -->
+                <div>
+                    <h3>Latest Mars News</h3>
+                    <h4 class="heading">{{nasainfo.news_title}}</h4>
+                    <small>{{nasainfo.news_p}}</small>
+                </div>
+                <!-- Latest Mars Image -->
+                <div>
+                    <h3>Latest Mars Image</h3>
+                    <img src="{{nasainfo.featured_image_url}}" alt="Latest Mars photo" />
+                </div>
+            </div>
+            <div class="col-md-5">
+                <!-- Twitter weather -->
+                <div style="border:1px solid #ccc;margin-bottom:30px;padding:20px;">
+                    <h4>Current Weather on Mars</h4>
+                    <p>{{nasainfo.latestweather}}</p>
+                </div>
+                <!-- Mars Facts -->
+                <div>
+                    <h4>Mars Facts</h4>
+                    {{nasainfo.mars_facts | safe}}
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
+
