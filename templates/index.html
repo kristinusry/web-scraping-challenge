@@ -42,6 +42,24 @@
                 </div>
             </div> 
         </div>
+        <!-- Mars Hemispheres -->
+        <div class="row">
+            <div class="col-md-12">
+            <h3 class="text-center">Mars Hemispheres</h3> 
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="padding:0 60px;">      
+            {% for hemisphere in nasainfo.hemisphere_images %} 
+                <div class="col-md-6">
+                    <div style="padding:10px;border:1px solid #ccc;margin:20px;">
+                        <img src="{{ hemisphere.img_url }}" alt="{{ hemisphere.title }}" style="width:100%;">
+                        <h4>{{ hemisphere.title }}</h4>
+                    </div>   
+                </div>    
+            {% endfor %}
+            </div>
+        </div> 
     </div>
 </body>
 </html>

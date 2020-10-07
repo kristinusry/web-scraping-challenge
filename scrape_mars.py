@@ -77,6 +77,64 @@ def scrape_info():
     # Convert to HTML table string
     mars_facts = mars_facts.to_html(classes="table table-striped")
 
+    # MARS HEMISPHERES
+    #-------------------------------------------------
+    # Open Cerberus
+    cerberus_url = "https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced"
+    browser.visit(cerberus_url)
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Get featured image URL
+    cerberus = soup.select_one('div.downloads a')['href']
+
+    # Open schiaparelli
+    schiaparelli_url = "https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced"
+    browser.visit(schiaparelli_url)
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Get featured image URL
+    schiaparelli = soup.select_one('div.downloads a')['href']
+
+    # Open syrtis
+    syrtis_url = "https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced"
+    browser.visit(syrtis_url)
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Get featured image URL
+    syrtis = soup.select_one('div.downloads a')['href']
+
+    # Open Valles Marieneris
+    valles_url = "https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced"
+    browser.visit(valles_url)
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Get featured image URL
+    valles = soup.select_one('div.downloads a')['href'] 
+
+    # Create a list of Mars Hemisphere images
+    hemisphere_image_urls = [
+        {"title": "Valles Marineris Hemisphere", "img_url": valles},
+        {"title": "Cerberus Hemisphere", "img_url": cerberus},
+        {"title": "Schiaparelli Hemisphere", "img_url": schiaparelli},
+        {"title": "Syrtis Major Hemisphere", "img_url": syrtis},
+    ]
+
     #-------------------------------------------------   
     # STORE ALL SCRAPED DATA INTO DICTIONARY
     #-------------------------------------------------
@@ -85,7 +143,8 @@ def scrape_info():
         "news_p": news_p,
         "featured_image_url": featured_image_url,
         "mars_facts": mars_facts,
-        "latestweather": latestweather
+        "latestweather": latestweather,
+        "hemisphere_images": hemisphere_image_urls
     }
 
     return mars_data
